@@ -27,3 +27,24 @@ export async function submitApplication(name: string, email: string, twitter: st
     return false;
   }
 }
+// 既存のFirebaseにデータを保存するコードがこの上にある想定です
+// 例: await addDoc(collection(db, "applications"), { ... });
+
+// 👇 ここからDiscord通知のコードを追加！
+// ⭕ エラーが消えるコード
+const discordUrl = (import.meta as any).env.VITE_DISCORD_WEBHOOK_URL;
+
+if (discordUrl) {
+  fetch(discordUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+    body: JSON.stringify({
+  content: `🔔 **WEBサイトから新着のお申し込みがありました！サークル管理画面を確認してください！**`
+}),
+      // ↑ ※ ${name} や ${email} は、あなたがフォームから取得している変数名に合わせて書き換えてください！
+    }),
+  });
+}
