@@ -1,4 +1,4 @@
-import { submitApplication } from "./firebase";
+import { submitApplication } from "./firebase.js";
 
 // ─── 1. タイトルや初期データのシミュレーション ───
 // ※ もしすでに他のファイルやAPIから取得している場合は、適宜調整してください
