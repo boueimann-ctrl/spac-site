@@ -27,88 +27,52 @@
         </div>
     </header>
 
-    <section id="photo-gallery" class="photo-gallery">
-        <div class="gallery-inner" id="gallery-inner">
-            <img src="photo1.jpg" alt="SPAC 活動写真 1">
-            <img src="photo2.jpg" alt="SPAC 活動写真 2">
-            <img src="photo3.jpg" alt="SPAC 活動写真 3">
-            <img src="photo4.jpg" alt="SPAC 活動写真 4">
+    <div class="photo-gallery">
+        <div class="gallery-inner">
+            <img src="/photo2.jpg" alt="Gallery 1">
+            <img src="/photo2.jpg" alt="Gallery 2">
+            <img src="/photo2.jpg" alt="Gallery 3">
+            <img src="/photo2.jpg" alt="Gallery 1">
+            <img src="/photo2.jpg" alt="Gallery 2">
+            <img src="/photo2.jpg" alt="Gallery 3">
         </div>
-    </section>
+    </div>
 
     <div class="main-card-wrapper">
         <main class="main-wrapper">
-
-            <section class="info-section animate-on-scroll">
-                <span class="section-number">01</span>
-                <h2>Three Core Features</h2>
-                <p class="lead-text" style="margin-bottom: 32px;">
-                    SPACは、従来のお堅いサークル文化やミリタリー特有の敷居の高さを排除した、専修大生中心の完全インディペンデント（非公認）コミュニティです。
-                </p>
-                
+            
+            <section class="info-section">
+                <h2>ABOUT CLUB</h2>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <div class="feature-icon">🔰</div>
-                        <h4>未経験者が主役</h4>
-                        <p>メンバーの8割が大学からスタート。専門知識や筋力は一切不要です。</p>
+                        <h3>自由な活動スタイル</h3>
+                        <p>兼サークル・バイト大歓迎。来たい時に来る、独自のカルチャーを大切にしています。</p>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon">🤝</div>
-                        <h4>完全手ぶらOK</h4>
-                        <p>高額な銃や服は買う必要なし。すべての装備をサークルでレンタル可能です。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🛡️</div>
-                        <h4>安全第一のルール</h4>
-                        <p>非公認だからこそ、公認以上の厳しい安全基準とクリーンな運営を徹底しています。</p>
+                        <h3>安全第一のルール</h3>
+                        <p>専修大学の公認ルールに準拠し、未経験者でも安全に楽しめる環境を徹底しています。</p>
                     </div>
                 </div>
             </section>
 
-            <section class="info-section animate-on-scroll">
-                <span class="section-number">02</span>
-                <h2>Next Activity</h2>
-                <p class="section-desc">直近で開催予定のイベントです。まずはここへの体験参加・見学から始まります。</p>
-                <div id="event-container">
-                    </div>
-            </section>
+            <section class="info-section">
+                <h2>JOIN US</h2>
+                <p class="section-desc">新歓への参加、見学のお申し込み、質問などは以下のフォームからお気軽にお送りください。</p>
 
-            <section class="info-section animate-on-scroll">
-                <span class="section-number">03</span>
-                <h2>Frequently Asked Questions</h2>
-                <div class="qa-container">
-                    <div class="qa-item">
-                        <span class="qa-q">Q. 非公認だと、大学の友達に怒られたりペナルティがあったりしますか？</span>
-                        <p class="qa-a">A. 一切ありません。大学の許可を受けずに学生が自主運営している一般的なインカレ・趣味サークルと同じ扱いなので、安心して参加してください。</p>
-                    </div>
-                    <div class="qa-item">
-                        <span class="qa-q">Q. 費用はどれくらいかかりますか？</span>
-                        <p class="qa-a">A. 年会費や入会金は0円です。かかるのは、イベントごとのフィールド利用実費（レンタルの有無で約3,000〜5,000円程度）のみです。</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="info-section contact-box animate-on-scroll">
-                <span class="section-number">04</span>
-                <h2>Join the Community</h2>
-                <p class="section-desc" style="text-align: center; max-width: 540px; margin: 0 auto 32px auto;">
-                    サークルへの参加申請や、質問・見学のお問い合わせは下記のフォーム、または公式SNSのDMからお気軽にご連絡ください！
-                </p>
-
-                <form id="join-form" class="modern-form">
+                <form id="application-form" class="modern-form">
                     <div class="form-group">
                         <label for="user-name">お名前 <span class="required">必須</span></label>
                         <input type="text" id="user-name" placeholder="専修 太郎" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="user-email">連絡先 (メールアドレス) <span class="required">必須</span></label>
+                        <label for="user-email">メールアドレス <span class="required">必須</span></label>
                         <input type="email" id="user-email" placeholder="example@senshu-u.jp" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="join-type">参加希望タイプ <span class="required">必須</span></label>
-                        <select id="join-type" required>
+                        <label for="user-purpose">ご用件 <span class="required">必須</span></label>
+                        <select id="user-purpose" required>
                             <option value="" disabled selected>選択してください</option>
                             <option value="experience">新歓サバゲー体験会に参加したい</option>
                             <option value="visit">まずは見学・説明だけ希望</option>
@@ -141,6 +105,6 @@
         <p>&copy; 2026 SPAC. Designed for Premium Community.</p>
     </footer>
 
-    <script type="module" src="/src/app.ts"></script>
+    <script type="module" src="./app.ts"></script>
 </body>
 </html>
