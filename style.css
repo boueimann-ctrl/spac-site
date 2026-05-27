@@ -1,438 +1,75 @@
-/* ==========================================================================
-   1. DESIGN SYSTEM & VARIABLES
-   ========================================================================== */
 :root {
-    --bg-global: #f3f4f6;
-    --bg-card: #ffffff;
-    --bg-secondary: #f8fafc;
-    --text-main: #0f172a;
-    --text-muted: #475569;
-    --text-light: #94a3b8;
-    --accent: #10b981;
-    --accent-hover: #059669;
-    --font-heading: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-    --font-body: 'Noto Sans JP', sans-serif;
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-base: all 0.5s var(--ease-out-expo);
-    --transition-slow: all 0.8s var(--ease-out-expo);
+    --bg-color: #0a0a0a;
+    --card-bg: #161616;
+    --primary-green: #00ff88;
+    --text-main: #ffffff;
+    --text-sub: #a0a0a0;
+    --border-color: #333;
 }
 
-/* ==========================================================================
-   2. RESET & BASE STYLES
-   ========================================================================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; }
+.content-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+.background-text {
+    position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+    font-size: 15vw; font-weight: 900; color: rgba(255, 255, 255, 0.03);
+    z-index: -1; pointer-events: none; white-space: nowrap;
 }
-
-body {
-    background-color: var(--bg-global);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.8;
-    letter-spacing: 0.02em;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-}
-
-@media (min-width: 601px) { .sm-only { display: none; } }
-
-/* ==========================================================================
-   3. BACKGROUND SCROLL ANIMATION TEXT
-   ========================================================================== */
-.bg-watermark-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.bg-watermark {
-    position: absolute;
-    font-family: var(--font-heading);
-    font-size: 14vw;
-    font-weight: 800;
-    color: rgba(15, 23, 42, 0.025);
-    letter-spacing: -0.05em;
-    line-height: 1;
-    white-space: nowrap;
-    will-change: transform;
-}
-
-#bg-text-1 { top: 15%; left: -5%; }
-#bg-text-2 { top: 45%; right: -5%; }
-#bg-text-3 { top: 75%; left: 10%; }
-
-/* ==========================================================================
-   4. HERO HEADER
-   ========================================================================== */
-.hero-header {
-    padding: 160px 24px 100px 24px;
-    text-align: center;
-    background-color: transparent;
-}
-
-.header-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.announcement {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    margin-bottom: 24px;
-    text-transform: uppercase;
-}
-
-.glitch-title {
-    font-family: var(--font-heading);
-    font-size: 5rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: var(--text-main);
-    line-height: 1.05;
-    margin-bottom: 32px;
-}
-
-.tagline {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    font-weight: 500;
-}
-
-/* ==========================================================================
-   5. 💡 UPDATED: INFINITE PHOTO GALLERY (背景との境目をハッキリさせ、ホバーを統一)
-   ========================================================================== */
+/* ギャラリーのコンテナ */
 .photo-gallery {
     width: 100%;
-    height: 360px;
     overflow: hidden;
-    position: relative;
-    padding: 32px 0;
-    margin-bottom: 60px;
-    background-color: var(--bg-secondary); /* 背景グレーと分離するための薄いインナーカラー */
-    border-top: 1px solid rgba(15, 23, 42, 0.05);   /* 上下の繊細な境界線 */
-    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    background: #000;
 }
 
+/* ギャラリーの中身（横並び） */
 .gallery-inner {
     display: flex;
-    gap: 24px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 32px 0; /* 親のパディングと同期 */
+    width: max-content;
+    animation: scroll 40s linear infinite;
 }
 
-.gallery-inner img {
-    height: 100%;
-    width: auto;
+/* 各写真のサイズと動き */
+.photo-gallery img {
+    width: 220px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
-    border: 1px solid rgba(15, 23, 42, 0.05);
-    transition: var(--transition-base);
+    opacity: 0.8;
+    transition: 0.3s;
 }
 
-/* 画像に触ったとき、メイン部分の特徴ボックスと同じく緑に光りながらフワッと浮く */
-.gallery-inner img:hover {
-    transform: scale(1.04) translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 16px 32px rgba(16, 185, 129, 0.15);
+.photo-gallery img:hover {
+    opacity: 1;
+}
+
+/* スクロールアニメーション */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.large-card, .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-/* ==========================================================================
-   6. MAIN CARD WRAPPER
-   ========================================================================== */
-.main-card-wrapper {
-    max-width: 860px;
-    margin: 0 auto 100px auto;
-    background-color: #ffffff;
-    border-radius: 32px;
-    border: 1px solid rgba(15, 23, 42, 0.05);
-    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.04);
+.large-card:hover, .card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-green);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
 }
 
-/* ==========================================================================
-   7. LAYOUT & SECTIONS
-   ========================================================================== */
-.main-wrapper {
-    max-width: 740px;
-    margin: 0 auto;
-    padding: 80px 24px;
-}
+.large-card { border-left: 5px solid var(--primary-green); margin-bottom: 20px; }
+.card h3 { color: var(--primary-green); margin-bottom: 15px; }
 
-.info-section {
-    position: relative;
-    margin-bottom: 120px;
-}
+form { display: flex; flex-direction: column; gap: 15px; }
+input, select, textarea { background: #000; border: 1px solid #444; color: white; padding: 12px; }
+button { padding: 15px; background: var(--primary-green); color: black; font-weight: bold; cursor: pointer; border: none; }
+button:hover { transform: scale(1.02); filter: brightness(1.2); }
 
-.info-section:last-of-type {
-    margin-bottom: 0;
-}
-
-.section-number {
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 12px;
-    letter-spacing: 0.1em;
-}
-
-.info-section h2 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 28px;
-}
-
-.lead-text {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    text-align: justify;
-    line-height: 1.9;
-}
-
-.section-desc {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 32px;
-}
-
-/* 特徴グリッド */
-.features-grid {
-    display: flex;
-    gap: 20px;
-    margin-top: 32px;
-}
-
-.feature-item {
-    flex: 1;
-    background-color: var(--bg-secondary);
-    border: 1px solid rgba(15, 23, 42, 0.04);
-    padding: 28px 24px;
-    border-radius: 20px;
-    transition: var(--transition-base);
-}
-
-.feature-item:hover {
-    transform: scale(1.03) translateY(-2px);
-    border-color: var(--accent);
-    background-color: #ffffff;
-    box-shadow: 0 16px 32px rgba(16, 185, 129, 0.06);
-}
-
-.feature-icon { font-size: 2rem; margin-bottom: 16px; }
-.feature-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-.feature-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-
-/* Q&Aセクション */
-.qa-container { display: flex; flex-direction: column; gap: 24px; }
-.qa-item { 
-    background-color: var(--bg-secondary); 
-    border: 1px solid rgba(15, 23, 42, 0.04); 
-    padding: 28px; 
-    border-radius: 20px; 
-    transition: var(--transition-base);
-}
-.qa-item:hover {
-    transform: scale(1.02);
-    border-color: var(--accent);
-    background-color: #ffffff;
-    box-shadow: 0 16px 32px rgba(16, 185, 129, 0.04);
-}
-.qa-q { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
-.qa-a { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; border-top: 1px dashed #e2e8f0; padding-top: 14px; }
-
-/* ==========================================
-   8. PREMIUM EVENT CARD
-   ========================================== */
-.premium-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid rgba(15, 23, 42, 0.04);
-    border-radius: 24px;
-    padding: 40px;
-    transition: var(--transition-base);
-}
-
-.premium-card:hover {
-    transform: scale(1.02) translateY(-3px);
-    background-color: #ffffff;
-    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.05);
-    border-color: var(--accent);
-}
-
-.card-tag {
-    display: inline-block;
-    background-color: #d1fae5;
-    color: #065f46;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 30px;
-    margin-bottom: 24px;
-    font-family: var(--font-heading);
-}
-
-.premium-card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; }
-.premium-card-meta { font-size: 0.85rem; color: var(--text-main); font-weight: 500; border-top: 1px solid #e2e8f0; padding-top: 24px; margin-top: 24px; }
-
-/* ==========================================
-   9. MODERN FORM DESIGN
-   ========================================== */
-.modern-form {
-    background-color: var(--bg-secondary);
-    border: 1px solid rgba(15, 23, 42, 0.04);
-    padding: 44px;
-    border-radius: 28px;
-    max-width: 600px;
-    margin: 0 auto 48px auto;
-    transition: var(--transition-base);
-}
-.modern-form:hover {
-    border-color: rgba(15, 23, 42, 0.1);
-    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.02);
-}
-
-.form-group { margin-bottom: 28px; text-align: left; }
-.form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
-
-.required, .optional { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
-.required { background-color: #fee2e2; color: #ef4444; }
-.optional { background-color: #f1f5f9; color: #64748b; }
-
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 14px 18px; border: 1px solid #cbd5e1; border-radius: 12px;
-    font-family: var(--font-body); font-size: 0.95rem; color: var(--text-main); background-color: #ffffff;
-    transition: var(--transition-base); outline: none;
-}
-
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--accent); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-}
-
-.btn-submit {
-    width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-    background-color: var(--text-main); color: #ffffff; border: none; padding: 18px;
-    border-radius: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition-base);
-}
-
-.btn-submit:hover { background-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2); }
-
-.sns-separator { text-align: center; position: relative; margin: 40px 0; }
-.sns-separator::before { content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: #e2e8f0; z-index: 1; }
-.sns-separator span { position: relative; z-index: 2; background-color: #ffffff; padding: 0 20px; font-size: 0.75rem; font-weight: 700; color: var(--text-light); }
-
-/* ==========================================
-   10. MODERN BUTTONS & SNS
-   ========================================== */
-.sns-group { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
-.btn-modern {
-    display: inline-flex; align-items: center; gap: 12px; background-color: var(--text-main); color: #ffffff;
-    text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
-    transition: var(--transition-base); box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
-}
-
-.btn-modern:hover { background-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 24px rgba(5, 150, 105, 0.25); }
-
-/* ==========================================
-   11. SCROLL ANIMATION SYSTEM
-   ========================================== */
-.animate-on-scroll {
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 1s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
-    will-change: opacity, transform;
-}
-
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
-.main-footer { text-align: center; padding: 60px 24px; font-size: 0.8rem; color: var(--text-light); font-family: var(--font-heading); }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* ==========================================================================
-   12. PERFECT RESPONSIVE DESIGN
-   ========================================================================== */
-@media (max-width: 768px) {
-    .glitch-title {
-        font-size: 3.2rem;
-        margin-bottom: 24px;
-    }
-    
-    .tagline {
-        font-size: 1rem;
-        padding: 0 12px;
-    }
-
-    /* 💡 スマホ時の無限ギャラリーの高さとパディングの微調整 */
-    .photo-gallery {
-        height: 260px;
-        margin-bottom: 40px;
-        padding: 20px 0;
-    }
-    .gallery-inner {
-        padding: 20px 0;
-    }
-
-    .main-card-wrapper {
-        margin: 0 12px 60px 12px;
-        border-radius: 24px;
-    }
-
-    .main-wrapper {
-        padding: 48px 16px;
-    }
-
-    .info-section {
-        margin-bottom: 80px;
-    }
-
-    .info-section h2 {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-    }
-
-    .features-grid {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .feature-item {
-        padding: 24px;
-    }
-
-    .premium-card, .modern-form {
-        padding: 24px 16px;
-        border-radius: 20px;
-    }
-
-    .sns-group {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-    }
-
-    .btn-modern, .btn-submit {
-        width: 100%;
-        justify-content: center;
-        padding: 16px;
-    }
-    
-    .feature-item:hover, .qa-item:hover, .premium-card:hover, .gallery-inner img:hover {
-        transform: scale(1.01);
-    }
-}
+.glitch-title { font-size: 4rem; color: var(--primary-green); text-align: center; }

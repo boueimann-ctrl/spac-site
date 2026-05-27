@@ -3,106 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPAC | 専修大学サバゲーサークル</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/style.css">
+    <title>SPAC | Senshu Airsoft Community</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <div class="bg-watermark-wrapper">
-        <div id="bg-text-1" class="bg-watermark">SPAC</div>
-        <div id="bg-text-2" class="bg-watermark">INDEPENDENT</div>
-        <div id="bg-text-3" class="bg-watermark">CULTURE</div>
-    </div>
+    <div class="background-text">SENSHU UNIVERSITY</div>
 
     <header class="hero-header">
-        <div class="header-container">
-            <p class="announcement">SENSHU UNIVERSITY INDEPENDENT CLUB</p>
-            <h1 id="site-title" class="glitch-title">読み込み中...</h1>
-            <p class="tagline">ルールは安全、マインドは自由。<br class="sm-only">型にはまらない、新しいシューティングカルチャー</p>
-        </div>
+        <p class="announcement">SENSHU UNIVERSITY AIRSOFT CLUB</p>
+        <h1 class="glitch-title">SPAC</h1>
     </header>
 
-    <div class="photo-gallery">
-        <div class="gallery-inner">
-            <img src="/photo2.jpg" alt="Gallery 1">
-            <img src="/photo2.jpg" alt="Gallery 2">
-            <img src="/photo2.jpg" alt="Gallery 3">
-            <img src="/photo2.jpg" alt="Gallery 1">
-            <img src="/photo2.jpg" alt="Gallery 2">
-            <img src="/photo2.jpg" alt="Gallery 3">
-        </div>
+    <main class="content-container">
+        <section class="grid-section">
+            <div class="large-card">
+                <h2>NEXT MISSION</h2>
+                <p>COMING SOON... STAY TUNED FOR UPDATES.<br>
+                <small>次回の活動詳細は近日公開。</small></p>
+            </div>
+        </section>
+        <div class="photo-gallery">
+    <div class="gallery-inner">
+        <img src="/photo1.jpg" alt="Gallery Photo 1">
+        <img src="/photo2.jpg" alt="Gallery Photo 2">
+        <img src="/photo3.jpg" alt="Gallery Photo 3">
+        <img src="/photo4.jpg" alt="Gallery Photo 4">
+        <img src="/photo1.jpg" alt="Gallery Photo 1">
+        <img src="/photo2.jpg" alt="Gallery Photo 2">
+        <img src="/photo3.jpg" alt="Gallery Photo 3">
+        <img src="/photo4.jpg" alt="Gallery Photo 4">
     </div>
+</div>
 
-    <div class="main-card-wrapper">
-        <main class="main-wrapper">
-            
-            <section class="info-section">
-                <h2>ABOUT CLUB</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h3>自由な活動スタイル</h3>
-                        <p>兼サークル・バイト大歓迎。来たい時に来る、独自のカルチャーを大切にしています。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>安全第一のルール</h3>
-                        <p>専修大学の公認ルールに準拠し、未経験者でも安全に楽しめる環境を徹底しています。</p>
-                    </div>
-                </div>
-            </section>
+        <section class="grid-main">
+            <div class="card">
+                <h3>ABOUT CLUB</h3>
+                <p>AUTONOMOUS & FREE STYLE.<br>
+                <small>兼サークル・バイト大歓迎。自由な活動スタイル。</small></p>
+            </div>
+            <div class="card">
+                <h3>LOADOUT</h3>
+                <p>RENTAL: MASK ONLY. PLEASE BRING YOUR OWN GEAR.<br>
+                <small>貸出はマスクのみ。ギアは各自持参をお願いします。</small></p>
+            </div>
+        </section>
 
-            <section class="info-section">
-                <h2>JOIN US</h2>
-                <p class="section-desc">新歓への参加、見学のお申し込み、質問などは以下のフォームからお気軽にお送りください。</p>
-
-                <form id="application-form" class="modern-form">
-                    <div class="form-group">
-                        <label for="user-name">お名前 <span class="required">必須</span></label>
-                        <input type="text" id="user-name" placeholder="専修 太郎" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="user-email">メールアドレス <span class="required">必須</span></label>
-                        <input type="email" id="user-email" placeholder="example@senshu-u.jp" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="user-purpose">ご用件 <span class="required">必須</span></label>
-                        <select id="user-purpose" required>
-                            <option value="" disabled selected>選択してください</option>
-                            <option value="experience">新歓サバゲー体験会に参加したい</option>
-                            <option value="visit">まずは見学・説明だけ希望</option>
-                            <option value="question">質問・その他のお問い合わせ</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="user-message">メッセージ・質問など <span class="optional">任意</span></label>
-                        <textarea id="user-message" rows="4" placeholder="サバゲーは完全に初めてですが大丈夫ですか？など、自由にご記入ください。"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">
-                        <span>送信する</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    </button>
+        <section class="form-section">
+            <div class="card form-card">
+                <h3>JOIN US / お申し込み</h3>
+                <form id="application-form">
+                    <input type="text" id="user-name" placeholder="NAME / お名前" required>
+                    <input type="email" id="user-email" placeholder="EMAIL / メールアドレス" required>
+                    <select id="user-purpose" required>
+                        <option value="" disabled selected>PURPOSE / 用件を選択</option>
+                        <option value="体験会参加">PARTICIPATE IN THE EVENT / 体験会に参加</option>
+                        <option value="見学希望">OBSERVATION / 見学</option>
+                        <option value="その他">OTHER INQUIRIES / その他</option>
+                    </select>
+                    <textarea id="user-message" rows="4" placeholder="MESSAGE / メッセージ"></textarea>
+                    <button type="submit">SEND MESSAGE / 送信</button>
                 </form>
-
-                <div class="sns-separator"><span>OR</span></div>
-                <div class="sns-group" style="justify-content: center;">
-                    <a href="#" class="btn-modern">Official X</a>
-                    <a href="#" class="btn-modern">Instagram</a>
-                </div>
-            </section>
-
-        </main>
-    </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 SPAC. Designed for Premium Community.</p>
+        <p>&copy; 2026 SPAC. TACTICAL & NATURAL.</p>
     </footer>
 
     <script type="module" src="./app.ts"></script>
