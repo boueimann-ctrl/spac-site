@@ -23,6 +23,7 @@ window.addEventListener('scroll', () => {
 const form = document.getElementById("application-form") as HTMLFormElement;
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    
     const formData = {
         name: (document.getElementById("user-name") as HTMLInputElement).value,
         email: (document.getElementById("user-email") as HTMLInputElement).value,
@@ -31,15 +32,33 @@ form?.addEventListener("submit", async (e) => {
     };
 
     try {
+        // 1. Firebaseに保存
         await addDoc(collection(db, "applications"), { ...formData, createdAt: serverTimestamp() });
+        
+        // 2. Discord通知
         if (webhookUrl) {
+            const discordMessage = {
+                content: `**SPAC新入生通知Botアプリ**\n` +
+                         `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+                         `**お名前:** ${formData.name}\n` +
+                         `**メール:** ${formData.email}\n` +
+                         `**ご用件:** ${formData.purpose}\n` +
+                         `**メッセージ:** ${formData.message}\n\n` +
+                         `━━━━━━━━━━━━━━━━━━━━━━━━`
+            };
+
             await fetch(webhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ content: `🔔 新着申込: ${formData.name} (${formData.purpose})` })
+                body: JSON.stringify(discordMessage)
             });
         }
+        
         alert("送信完了しました！");
         form.reset();
-    } catch (e) { alert("送信エラー"); }
+        
+    } catch (e) {
+        console.error(e); // コンソールにエラー内容を出力
+        alert("送信エラーが発生しました。");
+    }
 });
